@@ -1,0 +1,136 @@
+module.exports = {
+  content: [
+    "./*.html",
+    "./**/*.html",
+    "./**/*.js",
+  ],
+
+  theme: {
+    container: {
+      center: true,
+      padding: {
+                // DEFAULT: '.5rem',
+                xs: '0.2rem',
+                sm: '0rem',
+                // lg: '0',
+            },
+    },
+
+    extend: {
+      colors: {
+
+        joltorongo: {
+            primary: "#00A8EC",
+            ocean: "#073B4C",
+            deep: "#062D3A",
+            aqua: "#70D6E8",
+            mist: "#F4FBFD",
+        },
+
+
+        primary: {
+          // DEFAULT: "#D12329",
+          // DEFAULT: "#E7000B",
+          DEFAULT: "#00A8EC",
+          50: "#fff1f2",
+          100: "#ffe0e2",
+          200: "#ffc7cb",
+          300: "#ff9ea5",
+          400: "#ff6570",
+          500: "#00A8EC",
+          600: "#c40009",
+          700: "#a30008",
+          800: "#88010a",
+          900: "#73030b",
+        },
+        secondary: {
+          DEFAULT: "#0EA5E9",
+          50: "#f0f9ff",
+          100: "#e0f2fe",
+          200: "#bae6fd",
+          300: "#7dd3fc",
+          400: "#38bdf8",
+          500: "#0EA5E9",
+          600: "#0284c7",
+          700: "#0369a1",
+          800: "#075985",
+          900: "#0c4a6e",
+        },
+        accent: {
+          DEFAULT: "#FACC15",
+          50: "#fefce8",
+          100: "#fef9c3",
+          200: "#fef08a",
+          300: "#fde047",
+          400: "#facc15",
+          500: "#eab308",
+          600: "#ca8a04",
+          700: "#a16207",
+          800: "#854d0e",
+          900: "#713f12",
+        },
+
+        dark: {
+          DEFAULT: "#1D161E",
+          50:  "#fafafa",
+          100: "#f3f1f3",
+          200: "#e7e4e7",
+          300: "#d7d0d7",
+          400: "#a89ea9",
+          500: "#79697b",
+          600: "#594c5b",
+          700: "#463947",
+          800: "#2a212c",
+          900: "#1D161E",
+          950: "#0c090c"
+      }
+
+      },
+
+      screens: {
+              xs: '22.5rem', // 360px
+          },
+
+      fontFamily: {
+            sans: ["DM Sans", "sans-serif"],
+            serif: ["Playfair Display", "serif"],
+        },
+    },
+  },
+
+  plugins: [],
+}
+
+
+
+
+
+
+
+
+// /** @type {import('tailwindcss').Config} */
+// module.exports = {
+//     content: [
+//         "./index.html",
+//         "./templates/**/*.html",
+//         "./**/*.js",
+//     ],
+//     theme: {
+//         extend: {
+//             colors: {
+//                 joltorongo: {
+//                     primary: "#00A8EC",
+//                     ocean: "#073B4C",
+//                     deep: "#062D3A",
+//                     aqua: "#70D6E8",
+//                     mist: "#F4FBFD",
+//                 },
+//             },
+//             fontFamily: {
+//                 sans: ["DM Sans", "sans-serif"],
+//                 serif: ["Playfair Display", "serif"],
+//             },
+//         },
+//     },
+//     plugins: [],
+// };

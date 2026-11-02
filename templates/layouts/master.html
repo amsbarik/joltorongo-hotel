@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fontwesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- tailwind custom css link  -->
+    <link rel="stylesheet" href="{% static 'dist/style.css' %}">
+    <!-- <link rel="stylesheet" href="static/dist/style.css"> -->
+
+
+    {% if site_setting and site_setting.favicon %}
+        <link rel="icon" href="{{ site_setting.favicon.url }}" type="image/x-icon">
+    {% endif %}
+
+
+    {% if site_setting %}
+    <meta name="description" content="{{ site_setting.meta_description }}">
+    <meta name="keywords" content="{{ site_setting.meta_keywords }}">
+    {% endif %}
+
+    <title>
+        {% block title %}
+            {% if site_setting %}{{ site_setting.meta_title }}{% endif %}
+        {% endblock title %}
+    </title>
+
+</head>
+<body class="bg-primary-50">
+
+    <!-- header  -->
+    {% block header %}
+        {% include 'layouts/header.html' %}
+    {% endblock header %}
+
+
+    <!-- main content  -->
+    <main>
+        <!-- {% if messages %}
+        <div class="messages" style="position: fixed; right: 16px; top: 108px; z-index: 100;">
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} d-flex align-items-center" role="alert">
+                <span class="flex-grow-1">{{ message }}</span>
+                <button type="button" class="btn-close ms-3" aria-label="Close" onclick="this.parentElement.remove();"></button>
+            </div>
+            {% endfor %}
+        </div>
+
+        <script>
+            // Auto remove alerts after 3 seconds
+            setTimeout(function() {
+                document.querySelectorAll('.alert').forEach(alert => {
+                    alert.remove();
+                });
+            }, 3000);
+        </script>
+        {% endif %}
+
+         -->
+
+         {% if messages %}
+
+<div class="fixed right-4 top-28 z-50 space-y-3" id="messages" sty>
+
+    {% for message in messages %}
+
+    <div class="
+        flex items-center gap-4 
+        w-80
+        px-5 py-4
+        rounded-xl
+        shadow-lg
+        text-white
+
+        {% if message.tags == 'success' %}
+            bg-green-600
+        {% elif message.tags == 'error' %}
+            bg-red-600
+        {% elif message.tags == 'warning' %}
+            bg-yellow-500
+        {% else %}
+            bg-blue-600
+        {% endif %}
+    ">
+
+        <span class="flex-1 text-sm font-medium">
+            {{ message }}
+        </span>
+
+
+        <button 
+            type="button"
+            onclick="this.parentElement.remove();"
+            class="text-white/80 hover:text-white text-xl leading-none"
+        >
+            &times;
+        </button>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+<script>
+
+setTimeout(function(){
+
+    document.querySelectorAll('#messages > div')
+    .forEach(alert => {
+
+        alert.remove();
+
+    });
+
+}, 15000);
+
+
+</script>
+
+
+{% endif %}
+
+        {% block content %}
+            main content here
+        {% endblock content %}
+
+
+    </main>
+
+
+    <!-- footer start  -->
+     {% block footer %}
+        {% include 'layouts/footer.html' %}
+     {% endblock footer %}
+   
+
+
+    <!-- Scroll Progress Button -->
+    <div id="scrollBtn" class="fixed bottom-8 right-8 opacity-0 invisible transition-all duration-300 cursor-pointer z-50">
+
+        <div class="relative w-16 h-16">
+
+            <!-- Progress Circle -->
+            <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+
+                <!-- Background -->
+                <circle cx="50"  cy="50" r="38"  stroke="#e5e7eb" stroke-width="6" fill="none" />
+
+                <!-- Progress -->
+                <circle id="progressCircle"
+                    cx="50"
+                    cy="50"
+                    r="38"
+                    stroke="#E7000B"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                    fill="none"
+                    stroke-dasharray="264"
+                    stroke-dashoffset="264"
+                />
+            </svg>
+
+            <!-- Arrow Button -->
+            <button
+                id="topBtn"
+                class="absolute inset-0 m-auto w-11 h-11 rounded-full bg-white shadow-lg flex items-center justify-center">
+
+                <i class="fa-solid fa-chevron-up text-xl text-dark"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- main js link  -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
